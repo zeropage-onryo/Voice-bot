@@ -1,0 +1,56 @@
+# Architecture
+
+_To be filled in as the system is built — kept here from day one so decisions are recorded when they're made, not reconstructed afterward._
+
+## How it works (draft)
+
+Twilio places an outbound call to PGA's test line and streams the live call audio to a small FastAPI WebSocket server (the "bridge"). The bridge forwards that audio to OpenAI's Realtime API, which acts as the simulated patient — reasoning about the scenario and generating speech in real time — and streams the synthesized audio back through the bridge to Twilio, which plays it into the call. The bridge also taps the audio stream to write a recording and transcript per call.
+
+## Why Realtime API over a traditional STT -> LLM -> TTS pipeline
+
+A chained pipeline (Whisper -> GPT -> TTS) adds latency at each hop and requires hand-built turn-taking / interruption handling, which shows up as an unnatural, laggy caller. Since PGA's #1 evaluation criterion is a coherent, natural-sounding voice conversation, the Realtime API's integrated speech-to-speech approach (built-in turn detection and barge-in) was the better fit despite giving up some fine-grained control over exact wording.
+
+## Why Twilio
+
+Twilio Media Streams is the simplest way to get bidirectional, low-latency audio in and out of a real PSTN call from Python, and integrates cleanly with a WebSocket bridge.
+
+## Decision Log
+
+_Running log of choices and tradeoffs, added to as the system is built — the goal is that ARCHITECTURE.md can be read on its own at submission time without reconstructing "why" from the code. Each entry: decision, alternatives considered, why this one won._
+
+### 2026-08-18 — Realtime API over STT->LLM->TTS pipeline
+- **Decision:** Use OpenAI's Realtime API (speech-to-speech) for the caller bot instead of a chained Whisper -> GPT -> TTS pipeline.
+- **Alternatives considered:** Whisper (STT) -> GPT-4 (reasoning) -> ElevenLabs/OpenAI TTS pipeline. Gives more control per stage (inspectable transcript text, swappable voices) and is easier to log deterministically.
+- **Why Realtime API won:** PGA's #1 evaluation criterion is a coherent, natural voice conversation — submissions that don't clear that bar are rejected before code review. A chained pipeline stacks latency at each hop (STT finish -> LLM finish -> TTS render) and needs hand-built voice-activity-detection and barge-in handling to feel natural. The Realtime API does turn-taking and interruption handling internally, at the cost of less fine-grained control over exact wording — an acceptable tradeoff since the bot's job is to *sound like* a real caller, not deliver scripted lines.
+
+### 2026-08-18 — Twilio for telephony
+- **Decision:** Twilio Media Streams to place the outbound call and get bidirectional live audio.
+- **Alternatives considered:** Other telephony APIs (Vonage, SignalWire); a SIP trunk directly. Twilio was chosen for its maturity, simple Python SDK, and native WebSocket media streaming that plugs directly into a bridge server.
+- **Tradeoff accepted:** requires a publicly reachable webhook (ngrok in dev) for Twilio to reach the bridge server — adds a moving part during local development that a production deploy wouldn't have.
+
+### 2026-08-18 — Considered: Gemini Live API (already have access, no new account needed)
+- **Question:** Since I already have Gemini API access, why not use Gemini Live API instead of setting up a new OpenAI account?
+- **Finding:** Gemini Live API does not natively support g711/mulaw 8kHz audio (the format phone calls use) — this is a long-standing, unresolved request from developers (open since May 2025). Bridging it to Twilio requires hand-rolled audio resampling: 8kHz mulaw -> 16kHz PCM on input, and a two-step 24kHz -> 16kHz -> 8kHz downsample on output (done in two steps specifically to avoid audible aliasing artifacts from a single big jump). Developers report residual noise from the conversion. OpenAI's Realtime API accepts/returns g711_ulaw natively, so Twilio's raw audio passes straight through with no conversion code at all (see bridge/server.py).
+- **Decision:** Still use OpenAI Realtime API. The avoided setup friction of reusing an existing Gemini key doesn't outweigh the real risk: added DSP code within a 6-hour build budget, and a documented risk of audio artifacts undermining PGA's #1 evaluation criterion (a coherent, natural phone conversation). Informal naturalness rankings put Gemini ahead of OpenAI, but that's a soft signal against a hard integration cost.
+- **Revisit condition:** if OpenAI Realtime access or billing setup becomes a blocker, Gemini Live is the documented fallback, with the resampling work above scoped in advance rather than discovered mid-build.
+
+### 2026-08-18 — ngrok for local development, not a production choice
+- **Problem:** Twilio's servers need a public URL to fetch call instructions (`/twiml`) and open the live audio WebSocket (`/media-stream`). The bridge server runs on `localhost:8000` during development, which isn't reachable from the public internet.
+- **Options considered:** (1) ngrok - a local tunnel that maps a public URL to `localhost:8000`. (2) Deploy the bridge server to a real host (cloud VM, etc.) with a real public address before running any test calls.
+- **Decision:** Use ngrok for development/testing. It requires zero infrastructure setup, matches the challenge's actual scope (running test calls from a laptop, not standing up production hosting), and is the standard, fastest way to get a Twilio webhook working locally.
+- **Tradeoff accepted:** the ngrok URL changes every time it's restarted (on the free tier), so `PUBLIC_BASE_URL` in `.env` has to be updated each dev session before placing calls. Not a concern for this project's scope - a real deployment would use a fixed hostname instead and wouldn't need ngrok at all.
+
+### 2026-08-18 — Recording + transcript capture: mix to one file via audioop, convert with ffmpeg
+- **Problem:** PGA requires a recording (OGG/MP3) and transcript for every call, with both sides of the conversation. The live relay already moves mulaw audio in both directions; recording just means also keeping a copy of it and turning it into a real audio file at the end of the call.
+- **Decision:** Buffer both directions' raw mulaw bytes in memory during the call (call volume is small - short test calls - so no need for streaming-to-disk complexity). At call end, decode both to linear PCM and mix them into a single track with `audioop.add()`, write a WAV (stdlib `wave`, always available, no extra dependency), then shell out to `ffmpeg` to convert to MP3 (the format PGA requires).
+- **Note on `audioop`:** Python removed `audioop` from the standard library in 3.13. Used the community-maintained `audioop-lts` backport as a fallback import so this doesn't silently break on newer Python - see `bridge/recorder.py`.
+- **Tradeoff accepted:** the MP3 conversion depends on `ffmpeg` being installed locally. Chose to degrade gracefully (keep the WAV and print a clear warning) rather than crash a whole call's recording over a missing external tool, but this does mean `ffmpeg` needs to be installed before a real submission-ready MP3 comes out.
+- **Transcript source:** OpenAI's Realtime API transcribes both directions for us - `response.output_audio_transcript.delta` for our own patient bot's speech, and `conversation.item.input_audio_transcription.completed` (via `session.audio.input.transcription`, enabled in the session config) for PGA's agent's speech. No separate transcription service needed.
+
+### 2026-08-19 — ElevenLabs becomes the voice; OpenAI Realtime stays the ears and brain
+- **Decision:** Split the bot's brain in two. OpenAI's Realtime API keeps doing everything except speaking — it still hears the raw mulaw call audio, still does server-side turn detection, still holds the conversation state, still decides what the patient says next — but its `output_modalities` is now `["text"]`, and the reply text is synthesized by ElevenLabs streaming TTS (`bridge/tts.py`, model `eleven_flash_v2_5`, `output_format=ulaw_8000`) and streamed into the call. This supersedes the *output half* of the 2026-08-18 "Realtime API over STT->LLM->TTS" entry; the input/reasoning half of that decision stands.
+- **Why:** voice variety and control. OpenAI Realtime offers 10 fixed voices; the scenario suite wants 12+ callers who sound like genuinely different people (an 84-year-old man, a harried daughter, a chronic interrupter), and ElevenLabs' voice library plus per-scenario `voice`/`voice_direction` fields deliver that. Each scenario now pins a distinct voice id in `scenarios/*.json`.
+- **Alternative considered — full swap to ElevenLabs Conversational AI (their agent platform):** researched first, and their agent WebSocket does accept `ulaw_8000` both ways, so the resampling objection that killed Gemini Live doesn't apply. Rejected anyway: it replaces the reasoning engine too (new prompt/override plumbing, agent pre-configuration in their dashboard, per-field security toggles), all to solve what is purely a voice problem. Swapping only the mouth keeps the working turn-taking/reasoning stack untouched.
+- **Alternative considered — the full chained pipeline (transcription-only Realtime session + separate Chat Completions reasoning call + TTS):** rejected for latency and moving parts. It adds a second model round trip per turn and hand-built conversation-history tracking, and its only advantage (per-stage inspectability) isn't worth reintroducing the exact "latency at each hop" problem the 2026-08-18 entry chose Realtime to avoid. The text-modality approach keeps VAD, turn-taking, and state in the one place they already work. (LiveKit's OpenAI plugin documents this same text-modality-plus-TTS pattern.)
+- **What was measured before wiring (2026-08-19, real API):** `ulaw_8000` output verified byte-for-byte (bytes/8000 = seconds of speech, mixed and played back cleanly through recorder.py). Warm time-to-first-byte, median of 4 interleaved runs: **flash_v2_5 278ms, turbo_v2_5 338ms**. Cold first request: **1430ms** — connection setup, not model time — which is why `bridge/tts.py` holds one warm `httpx` client per process and `warm_up()` fires at call start. ElevenLabs streams ~12x faster than realtime playback.
+- **Tradeoffs accepted:** (1) ~280ms of added dead air per turn vs. speech-to-speech — the price of the voice swap; judged acceptable against normal human phone-pause rhythm, to be re-checked on real calls. (2) Barge-in is now hand-built (the Realtime API did it internally): on `input_audio_buffer.speech_started` the bridge cancels TTS playback and sends Twilio a `clear`. The `clear` is sent *unconditionally* — because ElevenLabs outruns playback ~12x, a whole reply sits in Twilio's buffer long after the sending task finishes, so "is the playback task alive" says nothing about whether audio is still coming out of the phone (this exact bug was caught in the offline harness before any live call — see ITERATION_LOG.md). (3) The bot's own transcript is now the reasoning text logged *before* synthesis rather than a transcription of what was actually played — strictly more accurate, except that a barged-in line is logged in full even though the caller heard it cut off.

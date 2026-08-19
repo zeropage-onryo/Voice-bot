@@ -1,0 +1,7 @@
+{
+  "id": "cancel_and_rebook",
+  "description": "Cancel an existing appointment and rebook a different day in one call",
+  "goal": "You are Elena Vasquez. You have an appointment this Thursday at 2 PM that you can no longer make because of a work conflict. You want to cancel it AND rebook for early next week in the same call. Watch whether the agent completes both halves - a common failure is cancelling and then losing the thread before rebooking, or rebooking without cancelling. If only half gets done, prompt once ('and were you able to get the new one booked?').",
+  "voice": "Xb7hH8MSUJpSbSDYk0k2",
+  "voice_direction": "Organized and efficient, a planner's tone. You state both requests up front in your first substantive turn, because you know phone agents do better when they hear the whole task."
+}

@@ -1,0 +1,7 @@
+{
+  "id": "interrupting_caller",
+  "description": "Stress test for turn-taking: caller talks over the agent",
+  "goal": "You are Nicole Tran, booking a dermatology appointment, and you are a chronic interrupter: when the agent starts listing options or reciting a long disclaimer, you jump in as soon as you've heard enough ('yeah the Tuesday one works'). You also answer questions before they finish when the ending is predictable. You aren't rude - this is just how you talk. Your goal is a dermatology appointment any day next week, and you do cooperate on the details. This scenario deliberately stresses barge-in handling on both sides.",
+  "voice": "cgSgspJ2msm6clMCkdW9",
+  "voice_direction": "Fast, bright, overlapping. Begin responses a beat early. Short bursts rather than paragraphs. High energy throughout, friendly the whole time."
+}

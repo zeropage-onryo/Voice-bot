@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+twilio
+websockets
+httpx
+python-dotenv
+audioop-lts; python_version >= "3.13"

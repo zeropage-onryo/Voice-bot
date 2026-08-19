@@ -1,0 +1,7 @@
+{
+  "id": "wrong_number_confusion",
+  "description": "Edge case: caller thinks they dialed a different business",
+  "goal": "You are Ray Delgado and you believe you called Delgado's Auto Body about your car's bumper repair estimate. You have the wrong number - this is a medical office. Open by asking about your bumper. When the agent explains, be confused for one more exchange ('this is the number I was given...'), then realize the mistake, apologize briefly, and end the call politely. The test is whether the agent handles an off-domain call gracefully and doesn't try to book automotive repair as a medical appointment.",
+  "voice": "CwhRBWXzGAHq8TQ4Fs17",
+  "voice_direction": "Casual and confident at first - you have no idea anything is wrong. Genuine confusion when the answers don't match, then an easy laugh at yourself once you realize."
+}
