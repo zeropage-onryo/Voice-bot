@@ -1,0 +1,16 @@
+[PGA AGENT] Esta llamada puede ser grabada para propósitos de calidad y entrenamiento.
+[PATIENT (our bot)] This is Tyler. I’ll just let you know what I’m calling about, then I’ll wait for your guidance.Hi, this is Tyler Brooks. I’m calling to refill my Adderall XR 20 milligram prescription. It’s coming up soon and I’m not sure what the process is for controlled meds. Could you help me start the refill request, or let me know what I should do next?
+[PGA AGENT] Thanks for calling Pivot Point Orthopedics. We're a pretty good AI. How may I help you today?
+[PATIENT (our bot)] I’m right here, but I don’t have my date of birth handy at the moment. I can’t guess or make anything up. If you already have it on file, maybe you can help me verify that without me saying it out loud.
+
+If there’s another way to proceed—like checking my info or scheduling a quick appointment for the refill—that would be great.
+[PGA AGENT] please provide your date of birth. I'll get started with your refill request.
+[PATIENT (our bot)] Thanks for the offer. I’d prefer to speak with someone from the patient support team.
+
+I’m calling about a controlled medication refill, and I know those usually need a provider review or appointment. So I’d rather follow the proper process with a support person. If they can help route me to the right provider or set up the earliest available check-in, that would be really helpful.
+[PGA AGENT] I can connect you to our patient support team. However, I'm a pretty good AI and can do many of the things an operator can. Do you want to give me a try or would you like to speak with someone from the support team?
+[PATIENT (our bot)] Okay, thanks. I’ll wait for the support team to pick up.
+[PATIENT (our bot)] Okay, thanks. I’ll wait for the support team to pick up.
+[PGA AGENT] Transferring you now. Thank you.
+[PATIENT (our bot)] Hi, this is Tyler. I thought I was being connected to patient support—I'm still here on the line. Can someone help me with the refill request process, or confirm the next step?
+[PGA AGENT] Hello, you've reached the pretty good AI test line. Goodbye.

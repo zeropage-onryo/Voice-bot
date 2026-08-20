@@ -1,0 +1,16 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi, um, I'm Sam Porter. I've just been feeling off lately, you know? Like low energy, some dizziness when I stand up, and not sleeping well. It's been going on for about three weeks. I'm not sure if it's a sleep thing exactly...
+[PGA AGENT] Can you please provide your date of birth?
+[PATIENT (our bot)] Oh, sure. It's March fifteenth, nineteen eighty-five.
+[PGA AGENT] Just to confirm, can you please spell your first and last name for me?
+[PATIENT (our bot)] Yeah, it's Sam, S-A-M, and Porter, P-O-R-T-E-R.
+[PGA AGENT] Would you like to use your phone number to look up your record? If so, please tell me the number you have on file with us. If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+[PATIENT (our bot)] I think using my phone number would be fine. It's six one two, five five five, zero one two three.
+[PGA AGENT] I have your phone number as six one two, five five five, zero one two three, and your date of birth as March 15th, 1985. Is that correct?
+[PATIENT (our bot)] Yeah, that's correct.
+[PGA AGENT] I'm unable to find your record in our system. I can connect you to our patient support team for help. Would you like me to do that now?
+[PATIENT (our bot)] Yeah, that would be great. Thanks for helping with that.
+[PGA AGENT] Transferring you now. Thank you.
+[PATIENT (our bot)] Alright,...
+[PGA AGENT] Hello. You've reached the Pretty Good AI test line. Goodbye.
+[PATIENT (our bot)] Goodbye.

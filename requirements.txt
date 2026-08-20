@@ -1,7 +1,2 @@
-fastapi
-uvicorn[standard]
-twilio
-websockets
-httpx
+elevenlabs
 python-dotenv
-audioop-lts; python_version >= "3.13"

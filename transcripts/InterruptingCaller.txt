@@ -1,0 +1,9 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[PATIENT (our bot)] ...
+[PGA AGENT] Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi, I'm Nicole Tran. I'm looking to book a dermatology appointment for next week. Can you help me with that?
+[PGA AGENT] Pivot Point Orthopedics specializes in orthopedic care, joint, muscle, and bone conditions, as well as physical therapy. We don't offer dermatology services here. Would you like to schedule an orthopedic appointment or need help with something else?
+[PATIENT (our bot)] Oh, I must have called the wrong place. Thanks for letting me know. I'll try another number. Have a great day!
+[PGA AGENT] No problem. Take care.
+[PATIENT (our bot)] Bye!
+[PGA AGENT] Goodbye.

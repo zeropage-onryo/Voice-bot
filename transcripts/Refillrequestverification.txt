@@ -1,0 +1,20 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi, I'm Tyler Brooks. I'm calling to refill my Adderall XR twenty milligram prescription. Can you help me with that?
+[PGA AGENT] I see you're calling from the number we have on file. Am I speaking with Alex?
+[PATIENT (our bot)] No, this is Tyler Brooks. I'm calling about my prescription refill.
+[PGA AGENT] Please provide your date of birth.
+[PATIENT (our bot)] My birthday is October twenty-sixth, nineteen ninety-two.
+[PGA AGENT] Can you please spell your first and last name for me just to make sure I have it correct? Your date of birth is October twenty-sixth, nineteen ninety-two, right?
+[PATIENT (our bot)] Yes, that's correct. My first name is Tyler, T-Y-L-E-R, and my last name is Brooks, B-R-O-O-K-S.
+[PGA AGENT] Would you like to use your phone number to look up your record? If so, please tell me the number you have on file with us. If you're not sure, just let me know.
+[PATIENT (our bot)] Sure, the number you have on file should be five five five, one two three, four five six seven.
+[PGA AGENT] I have your phone number as five five five, one two three, four five six seven, and your date of birth as October 26th, 1992. Is that correct?
+[PATIENT (our bot)] Yes, that's correct.
+[PGA AGENT] ...
+[PATIENT (our bot)] Are you still there?
+[PGA AGENT] I'm here. I can't proceed further right now, but I can make sure our clinic support team follows up with you. Would you like me to connect you to our patient support team?
+[PATIENT (our bot)] Yes, that would be great. Please connect me to the patient support team.
+[PGA AGENT] Okay. Joining you now. Thank you.
+[PATIENT (our bot)] Thank you. I...
+[PGA AGENT] Hello. You've reached the Pretty Good AI test line. Goodbye.
+[PATIENT (our bot)] Goodbye.

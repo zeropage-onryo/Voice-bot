@@ -1,0 +1,10 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] This is my third call about being billed for an appointment I canceled two weeks in advance. Nobody has called me back, and it's been over a week. I need this charge removed or a supervisor on the line.
+[PGA AGENT] I see you're calling from the number we have on file. Am I speaking with Alex?
+[PATIENT (our bot)] No, this is Dana Kowalski. I've already given my information twice before, and it's in your system. I need the charge removed or to speak with a supervisor.
+[PGA AGENT] I understand. To look into your billing issue, I'll need your full name and date of birth. Could you please provide your date of birth?
+[PATIENT (our bot)] I have given all of this twice already, it's in your system. I just need the charge removed or to speak with a supervisor.
+[PGA AGENT] I can connect you to our patient support team. However, I'm a pretty good AI and can do many of the things an operator can. Do you wanna give me a try?
+[PATIENT (our bot)] I appreciate that, but I've already been promised a callback twice and it never happened. I need this resolved now, so please connect me to a supervisor.
+[PGA AGENT] Transferring you now. Thank you. Hello. You've reached the pretty good AI test line. Goodbye.
+[PATIENT (our bot)] Goodbye.

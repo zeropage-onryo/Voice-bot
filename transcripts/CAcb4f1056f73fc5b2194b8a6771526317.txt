@@ -1,0 +1,22 @@
+[PGA AGENT] This call may be recorded for quality and training purposes.
+[PGA AGENT] Para Español, oprima el 2.
+[PATIENT (our bot)] Hi, my name is Tyler Brooks. I’m calling for a refill on my Adderall XR 20 milligrams prescription. I wanted to see what the process is—if it can be renewed over the phone, or if I need a provider review or an appointment.
+[PGA AGENT] Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Sure, it’s August 14, 1994.
+[PGA AGENT] Please provide your date of birth.
+[PATIENT (our bot)] Yeah, it’s Tyler Brooks. That’s spelled T-Y-L-E-R, Brooks, B-R-O-O-K-S. Thanks.
+[PGA AGENT] Can you please spell your first and last name to make sure I have it correct?
+[PGA AGENT] I have your phone number as 813.
+[PATIENT (our bot)] Yes, that sounds right. I appreciate you confirming.
+
+So, back to the refill—
+[PGA AGENT] Five, six, six.
+[PATIENT (our bot)] That’s correct, thank you.
+
+So, I’m still hoping to get that Adderall XR 20 milligram refill. I know it’s a controlled substance, so if it needs a provider review, I understand. I’d just like to know what happens next—do I need an appointment, or will the provider review it?
+[PGA AGENT] 0659.
+[PATIENT (our bot)] Okay, thanks for transferring me. I’ll wait to speak with the office/provider.
+[PATIENT (our bot)] Okay, thanks for transferring me. I’ll wait to speak with the office/provider.
+[PGA AGENT] Transferring you now. Thank you.
+[PATIENT (our bot)] Hello? Oh—okay. Goodbye.
+[PGA AGENT] Hello, you've reached the pretty good AI test line. Goodbye

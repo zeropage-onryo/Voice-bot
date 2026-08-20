@@ -77,6 +77,17 @@ class CallRecorder:
         agent_pcm += b"\x00" * (longest - len(agent_pcm))
         patient_pcm += b"\x00" * (longest - len(patient_pcm))
 
+        # audioop.add clips (not wraps) past 16-bit full scale, and it
+        # was being handed both tracks at full volume - any moment both
+        # sides had real audio at once (frequent, given the crosstalk
+        # documented in ITERATION_LOG.md 2026-08-19) summed past the
+        # ceiling and clipped, which is heard as static/crackle.
+        # Attenuating each side to 50% before summing guarantees the
+        # mix can never exceed full scale even if both peak
+        # simultaneously - standard headroom for a two-source mix.
+        agent_pcm = audioop.mul(agent_pcm, SAMPLE_WIDTH, 0.5)
+        patient_pcm = audioop.mul(patient_pcm, SAMPLE_WIDTH, 0.5)
+
         return audioop.add(agent_pcm, patient_pcm, SAMPLE_WIDTH)
 
     def save(self, recordings_dir: Path, transcripts_dir: Path) -> dict:

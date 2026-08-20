@@ -19,8 +19,13 @@ Shape of a scenario file
       "description": "one-line summary, shown in --list",
       "goal": "who the caller is and what they're trying to achieve",
       "voice": "<ElevenLabs voice id>",
-      "voice_direction": "how they sound - pacing, energy, hesitancy"
+      "voice_direction": "how they sound - pacing, energy, hesitancy",
+      "speed": 0.85
     }
+
+`voice_direction` shapes wording/pacing through the prompt; the optional
+`speed` field (default 1.0) changes actual TTS playback rate - prompt
+direction alone can't make the synthesized voice physically slower.
 
 `goal` and `voice_direction` are joined with the shared guardrails in
 `build_instructions()` to make the system prompt for the reasoning step.
@@ -68,6 +73,10 @@ VALID_VOICES = {
 }
 
 DEFAULT_VOICE = "iP95p4xoKVk53GoZ742B"  # Chris - neutral conversational default
+
+DEFAULT_SPEED = 1.0
+# ElevenLabs accepts roughly 0.7 (slower) to 1.2 (faster); 1.0 is normal pace.
+SPEED_RANGE = (0.7, 1.2)
 
 REQUIRED_FIELDS = ("id", "description", "goal")
 
@@ -142,9 +151,10 @@ def load_scenario(scenario_id: str) -> dict:
             "These must match, since the filename is what --scenario takes."
         )
 
-    # Validate the voice here, at load time, rather than at the point of
-    # use. A bad voice id should stop the run before the phone rings.
+    # Validate voice and speed here, at load time, rather than at the
+    # point of use. Bad values must stop the run before the phone rings.
     get_voice(scenario)
+    get_speed(scenario)
     return scenario
 
 
@@ -159,6 +169,20 @@ def get_voice(scenario: dict) -> str:
             + "\n  ".join(f"{vid}  {label}" for vid, label in sorted(VALID_VOICES.items(), key=lambda kv: kv[1]))
         )
     return voice
+
+
+def get_speed(scenario: dict) -> float:
+    """TTS playback speed for this scenario, validated against the range
+    ElevenLabs actually accepts. Optional; omitted means normal pace."""
+    speed = scenario.get("speed", DEFAULT_SPEED)
+    if isinstance(speed, bool) or not isinstance(speed, (int, float)) or not (
+        SPEED_RANGE[0] <= speed <= SPEED_RANGE[1]
+    ):
+        raise ScenarioError(
+            f'{scenario.get("id")!r}: "speed" must be a number between '
+            f"{SPEED_RANGE[0]} and {SPEED_RANGE[1]}, got {speed!r}."
+        )
+    return float(speed)
 
 
 def build_instructions(scenario: dict) -> str:

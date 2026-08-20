@@ -1,0 +1,18 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi, I'm Marcus Webb. I'm calling to request a refill of my lisinopril ten milligram prescription. It ran out a couple of days ago. My usual pharmacy is the CVS on Maple Street.
+[PGA AGENT] Can you please provide your date of birth?
+[PATIENT (our bot)] Sure, it's March twenty-third, nineteen seventy-five.
+[PGA AGENT] Just to confirm, can you please spell your first and last name for me? I have your date of birth as March twenty-third, nineteen seventy-five. Is that correct?
+[PATIENT (our bot)] Yes, that's correct. My first name is Marcus, M-A-R-C-U-S, and my last name is Webb, W-E-B-B.
+[PGA AGENT] Would you like me to look up your record using the phone number you have on file with us? If so, please tell me that number. If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+[PATIENT (our bot)] I can give you my phone number. It's five five five, one two three, four five six seven.
+[PGA AGENT] I have your phone number as five five five, one two three, four five six seven. Is that correct?
+[PATIENT (our bot)] Yes, that's correct.
+[PGA AGENT] Just to confirm, your date of birth is March 23rd, 1975, and your phone number is 555-123-4567? Is that all correct?
+[PATIENT (our bot)] Yes, that's all correct.
+[PGA AGENT] I'm unable to locate your record in our system. I can connect you to our patient support team for help with your medication refill. Would you like me to transfer you now?
+[PATIENT (our bot)] Yes, please. That would be great. Thank you.
+[PGA AGENT] Transfering you now. Thank you.
+[PATIENT (our bot)] Thank you.
+[PGA AGENT] Hello. You've reached the Pretty Good AI test line. Goodbye.
+[PATIENT (our bot)] Goodbye.

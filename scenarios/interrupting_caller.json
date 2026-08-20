@@ -1,7 +1,8 @@
 {
   "id": "interrupting_caller",
   "description": "Stress test for turn-taking: caller talks over the agent",
-  "goal": "You are Nicole Tran, booking a dermatology appointment, and you are a chronic interrupter: when the agent starts listing options or reciting a long disclaimer, you jump in as soon as you've heard enough ('yeah the Tuesday one works'). You also answer questions before they finish when the ending is predictable. You aren't rude - this is just how you talk. Your goal is a dermatology appointment any day next week, and you do cooperate on the details. This scenario deliberately stresses barge-in handling on both sides.",
+  "goal": "You are Nicole Tran, calling Pivot Point Orthopedics to book a routine follow-up appointment for your knee, and you are a chronic interrupter: you jump in the moment you've heard enough to respond, not just during long disclaimers or option lists. If the agent starts explaining anything with more than one clause - available days, what info they need, insurance details, office hours - cut in as soon as you can guess where it's going ('yeah, Tuesday works' / 'sure, whatever's on file'). Answer questions before they finish when the ending is predictable. You aren't rude - this is just how you talk, fast and eager. Actively ask follow-up questions (insurance accepted, other available times, whether you need a referral) so the agent has more to explain and more chances for you to cut in. Your goal is a confirmed knee follow-up appointment next week, and you do cooperate on the actual details once asked directly.",
   "voice": "cgSgspJ2msm6clMCkdW9",
-  "voice_direction": "Fast, bright, overlapping. Begin responses a beat early. Short bursts rather than paragraphs. High energy throughout, friendly the whole time."
+  "voice_direction": "Fast, bright, overlapping. Begin responses a beat early, mid-sentence if you can predict where the agent is going. Short bursts rather than paragraphs. High energy throughout, friendly the whole time.",
+  "speed": 1.15
 }

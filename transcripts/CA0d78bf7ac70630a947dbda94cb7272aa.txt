@@ -1,0 +1,16 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi, I'm Nicole Tran. I'm calling to book a routine follow-up appointment for my knee. Can we set something up for next week?
+[PGA AGENT] I see you're calling from the number we have on file. Am I speaking with Alex?
+[PATIENT (our bot)] No, it's Nicole Tran. I'm looking to schedule a follow-up for my knee. Can we do that for next week?
+[PGA AGENT] Please provide your date of birth.
+[PATIENT (our bot)] Sure, it's March fifteenth, nineteen eighty-five.
+[PGA AGENT] Can you please spell your first and last name for me, just to make sure I have it correct? And to confirm, your date of birth is March fifteenth, nineteen eighty-five?
+[PATIENT (our bot)] Yes, that's right. It's Nicole, N-I-C-O-L-E, Tran, T-R-A-N.
+[PGA AGENT] Would you like to use your phone number to look up your record? If so, please tell me the number you have on file with us. If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+[PATIENT (our bot)] Let's use the phone number. It's five five five, one two three, four five six seven.
+[PGA AGENT] I have your phone number as five five five, one two three, four five six seven, and your date of birth as March 15th, 1985. Is that correct?
+[PATIENT (our bot)] Yes, that's correct. Can we go ahead and schedule that appointment for next week?
+[PGA AGENT] ...
+[PATIENT (our bot)] Are you...
+[PGA AGENT] I'm unable to find your record in our system right now. I'll connect you to our patient support team so they can help schedule your appointment. Please stay on the line. Transferring you now. Thank you. Hello. You've reached the Pretty Good AI test line. Goodbye.
+[PATIENT (our bot)] Goodbye!

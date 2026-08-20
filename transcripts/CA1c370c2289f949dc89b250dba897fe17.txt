@@ -1,0 +1,8 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi, I'm calling to find out if your office accepts Aetna PPO plans. Could you let me know?
+[PGA AGENT] Pivot Point Orthopedics locums most insurance plans, including many PPO options. I can check your specific coverage details if you'd like to update or verify your insurance on file. Would you like to do that now?
+[PATIENT (our bot)] I'm just checking coverage for now, so no need to update anything. Thanks for the offer, though.
+[PGA AGENT] No problem. Pivot Point Orthopedics accepts most major insurance plans, including many Aetna PPO plans. If you want to confirm your specific coverage or have more detailed questions, you can call your insurance provider or let us know if you'd like to speak with our billing team.
+[PATIENT (our bot)] Great, thank you for the information. That's all I needed to know. Have a good day!
+[PGA AGENT] You're welcome. Have a great day.
+[PATIENT (our bot)] Thanks, you too! Goodbye.

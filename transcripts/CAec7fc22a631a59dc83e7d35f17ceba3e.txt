@@ -1,0 +1,6 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi there, I was calling to get an estimate on repairing my car's bumper. Can you help me with that?
+[PGA AGENT] That's not something we offer. Divot Point Orthopedics is a medical clinic for joint, muscle, and bone care. If you have questions about orthopedic services or appointments, I can help with that.
+[PATIENT (our bot)] Oh, I see. This is the number I was given for the auto body shop. Sorry for the mix-up. I'll try to find the right number. Thanks for your help!
+[PGA AGENT] No problem at all. If you ever need orthopedic care, feel free to call back. Have a great day.
+[PATIENT (our bot)] Thanks, you too! Goodbye!

@@ -1,0 +1,9 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling PivotPoint Orthopedics, part of Pretty Good AI.
+[PATIENT (our bot)] Hi, I'm calling to schedule an appointment for my mom, Lakshmi Raman. She doesn't speak much English, so I'm helping her out. Can you assist me with that?
+[PGA AGENT] Please provide your mom's date of birth so I can look up her information.
+[PATIENT (our bot)] Sure, her date of birth is around March nineteen fifty-five.
+[PGA AGENT] Could you confirm the exact date in March nineteen fifty-five? For example, March 5th or March 15th? This will help me find her record.
+[PATIENT (our bot)] I'm sorry, I don't have the exact date with me right now. Is there any other way we can proceed?
+[PGA AGENT] I need the full date of birth to look up her record. If you can get that information, I'll be able to help schedule her appointment.
+[PATIENT (our bot)] Alright, I'll check and get back to you with the exact date. Thanks for your help.
+[PGA AGENT] You're welcome. Once you have the exact date of birth, feel free to call back. Have a good day. You're welcome. Once you have the exact date of birth, feel free to call

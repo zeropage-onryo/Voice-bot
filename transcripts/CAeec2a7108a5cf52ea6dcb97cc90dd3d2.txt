@@ -1,0 +1,16 @@
+[PGA AGENT] This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. How may I help you today?
+[PATIENT (our bot)] Hi, I'm Alex Johnson. I'd like to schedule a routine check-up appointment for sometime next week. Mornings work best for me.
+[PGA AGENT] Please provide your date of birth.
+[PATIENT (our bot)] Sure, it's March fifteenth, nineteen eighty-five.
+[PGA AGENT] Just to confirm, can you please spell your first and last name for me? I have your date of birth as March fifteenth, nineteen eighty-five. Is that correct?
+[PATIENT (our bot)] Yes, that's correct. My first name is Alex, A-L-E-X, and my last name is Johnson, J-O-H-N-S-O-N.
+[PGA AGENT] Would you like to use your phone number to look up your record? If so, please provide the number you have on file with us. If you're not sure, just let me know.
+[PATIENT (our bot)] Sure, my phone number is five five five, one two three, four five six seven.
+[PGA AGENT] I have your phone number as five five five, one two three, four five six seven, and your date of birth is March 15th, 1985. Is that correct?
+[PATIENT (our bot)] Yes, that's correct.
+[PGA AGENT] I can't proceed further right now, but I can make sure our clinic support team follows up with you. Would you like me to connect you to our patient support team?
+[PATIENT (our bot)] That would be great, thank you.
+[PGA AGENT] Okay, it's raining now. Thank you.
+[PATIENT (our bot)] You're welcome. Have a...
+[PGA AGENT] Hello. You've reached the Pretty Good AI test line. Goodbye.
+[PATIENT (our bot)] Goodbye!
