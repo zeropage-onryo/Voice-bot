@@ -28,7 +28,7 @@ from scenarios import loader
 
 load_dotenv()
 
-PGA_TEST_LINE = os.environ["PGA_TEST_LINE"]
+TARGET_NUMBER = os.environ["TARGET_NUMBER"]
 
 
 def place_call(scenario_id: str, wait: bool = True) -> str:
@@ -52,7 +52,7 @@ def place_call(scenario_id: str, wait: bool = True) -> str:
     response = client.conversational_ai.twilio.outbound_call(
         agent_id=os.environ["ELEVENLABS_AGENT_ID"],
         agent_phone_number_id=os.environ["ELEVENLABS_AGENT_PHONE_NUMBER_ID"],
-        to_number=PGA_TEST_LINE,
+        to_number=TARGET_NUMBER,
         call_recording_enabled=True,
         # The whole scenario system plugs in right here: the persona
         # becomes the agent's system prompt for this one call, and the
