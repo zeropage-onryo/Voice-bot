@@ -4,6 +4,14 @@ An automated "patient caller" voice bot. It places real phone calls to a test li
 
 ## What this is
 
+
+
+https://github.com/user-attachments/assets/bffcab7d-98ec-4393-a0f7-34ef345d324b
+
+
+
+
+
 - **Working code** — a Python voice bot that dials PGA's test line via ElevenLabs Agents (GPT-4o reasoning + a distinct ElevenLabs voice per persona) and holds a live conversation with their AI agent, with turn-taking, VAD, and barge-in handled by the platform.
 - **12 caller scenarios** — `scenarios/*.json`, covering simple scheduling, rescheduling/cancellation, controlled-substance and simple refills, insurance questions, and edge cases (interruptions, vague symptoms, wrong numbers, a frustrated repeat caller, an after-hours urgent case, and more).
 - **Call recordings + transcripts** — `recordings/` (MP3) and `transcripts/` (`[SPEAKER] text` format), evidence for the bug report.
