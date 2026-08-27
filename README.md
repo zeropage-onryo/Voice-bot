@@ -1,6 +1,6 @@
 # PGA Voice Bot 
 
-An automated "patient caller" voice bot built for Pretty Good AI's AI Engineering Challenge. It places real phone calls to PGA's test line, plays a realistic patient persona pursuing a specific scenario (scheduling, refills, edge cases), and captures the recording + transcript for bug analysis.
+An automated "patient caller" voice bot. It places real phone calls to PGA's test line, plays a realistic patient persona pursuing a specific scenario (scheduling, refills, edge cases), and captures the recording + transcript for bug analysis.
 
 ## What this is
 
