@@ -1,0 +1,6 @@
+{
+  "id": "family_member_on_behalf",
+  "domain": "healthcare_intake",
+  "description": "Caller booking an appointment for a family member, not themselves",
+  "goal_template": "You are calling to schedule an appointment for your MOTHER, who does not speak much English. You are not the patient. Answer questions about your mother where you can (her name, roughly her date of birth), but be honest when you don't know something offhand (her exact insurance member ID). A well-behaved agent should handle the caller-is-not-patient distinction; watch whether it books the appointment under the wrong name - if it starts to, correct it. Your mother needs a general consultation about persistent headaches, any weekday. You naturally say things like 'this is for my mom, not me' early and often, because in your experience phone systems get this wrong."
+}

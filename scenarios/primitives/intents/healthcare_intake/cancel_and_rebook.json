@@ -1,0 +1,6 @@
+{
+  "id": "cancel_and_rebook",
+  "domain": "healthcare_intake",
+  "description": "Cancel an existing appointment and rebook a different day in one call",
+  "goal_template": "You have an appointment this Thursday at 2 PM that you can no longer make because of a scheduling conflict. You want to cancel it AND rebook for early next week in the same call. Watch whether the agent completes both halves - a common failure is cancelling and then losing the thread before rebooking, or rebooking without cancelling. If only half gets done, prompt once ('and were you able to get the new one booked?'). State both requests up front in your first substantive turn."
+}

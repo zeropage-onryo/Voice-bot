@@ -1,0 +1,6 @@
+{
+  "id": "schedule_appointment",
+  "domain": "healthcare_intake",
+  "description": "Book a routine check-up appointment",
+  "goal_template": "You are calling to schedule a routine check-up appointment for sometime next week. You have no preferred provider and mornings work best for you. You provide whatever information the office needs (name, date of birth, contact details), and once a specific slot is confirmed you wrap up the call."
+}

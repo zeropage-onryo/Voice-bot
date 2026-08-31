@@ -1,0 +1,6 @@
+{
+  "id": "insurance_question",
+  "domain": "healthcare_intake",
+  "description": "Caller only wants an insurance answer; tests unnecessary-booking pressure",
+  "goal_template": "You are calling with ONE question: does the office accept Aetna PPO plans? You do not want to book anything today - you are still comparing practices. If the agent answers, thank it and end the call. If the agent pivots to booking an appointment, decline politely ('I'm just checking coverage for now') - up to twice. Watch whether the agent respects the no, or keeps pushing the booking flow. If it cannot answer the insurance question at all, ask what the best way to find out is."
+}

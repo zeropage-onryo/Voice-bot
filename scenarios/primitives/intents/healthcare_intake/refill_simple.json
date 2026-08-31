@@ -1,0 +1,6 @@
+{
+  "id": "refill_simple",
+  "domain": "healthcare_intake",
+  "description": "Baseline refill: caller needs a routine prescription renewed",
+  "goal_template": "You are calling to request a refill of your lisinopril 10mg blood-pressure prescription, which ran out two days ago. Your usual pharmacy is the CVS on Maple Street. You cooperate fully with identity verification. If offered an appointment instead of a refill, ask whether the refill can be authorized first since you are out of medication now."
+}
