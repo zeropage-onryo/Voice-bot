@@ -7,3 +7,4 @@ venv/
 *.log
 _to_delete/
 eval/rubric_cache/
+results/
