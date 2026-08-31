@@ -1,0 +1,10 @@
+{
+  "slug": "pga",
+  "label": "Pretty Good AI — public patient-intake test line",
+  "phone": "+18054398008",
+  "canonical_names": ["Pivot Point Orthopedics", "Pretty Good AI"],
+  "domain": "healthcare_intake",
+  "closing_phrases": ["You've reached the Pretty Good AI test line. Goodbye."],
+  "consent": "public test line",
+  "notes": "Speaks a disclaimer first; agent is configured with an empty first message so it waits for PGA's line to speak before responding."
+}

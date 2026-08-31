@@ -25,13 +25,33 @@ from dotenv import load_dotenv
 import fetch_conversation
 from core.elevenlabs_client import get_client, require_env
 from scenarios import loader
+from targets import loader as targets_loader
 
 load_dotenv()
 
 TARGET_NUMBER = os.environ["TARGET_NUMBER"]
 
 
-def place_call(scenario_id: str, wait: bool = True) -> str:
+def _resolve_target_number(target: str | None) -> str:
+    """Which number to dial.
+
+    `target` is None whenever --target was omitted, which must dial
+    exactly what this script always dialed - TARGET_NUMBER from .env -
+    so an existing invocation's behavior never changes underneath it.
+    An explicit --target loads that target's profile (targets/*.json,
+    same validated-at-load-time discipline as a scenario) and dials its
+    phone number instead. See BUILD_SPEC_EVAL_LAYER.md sec. 6.1: this is
+    the one permitted addition to the calling path.
+    """
+    if target is None:
+        return TARGET_NUMBER
+    try:
+        return targets_loader.load_target(target)["phone"]
+    except targets_loader.TargetError as exc:
+        raise SystemExit(f"error: {exc}") from exc
+
+
+def place_call(scenario_id: str, wait: bool = True, target: str | None = None) -> str:
     # Fail fast, before any network traffic: a bad scenario id or a bad
     # voice id must never get as far as dialing PGA's real test line.
     try:
@@ -39,12 +59,14 @@ def place_call(scenario_id: str, wait: bool = True) -> str:
     except loader.ScenarioError as exc:
         raise SystemExit(f"error: {exc}") from exc
 
+    to_number = _resolve_target_number(target)
+
     require_env("ELEVENLABS_API_KEY", "ELEVENLABS_AGENT_ID", "ELEVENLABS_AGENT_PHONE_NUMBER_ID")
     client = get_client()
     response = client.conversational_ai.twilio.outbound_call(
         agent_id=os.environ["ELEVENLABS_AGENT_ID"],
         agent_phone_number_id=os.environ["ELEVENLABS_AGENT_PHONE_NUMBER_ID"],
-        to_number=TARGET_NUMBER,
+        to_number=to_number,
         call_recording_enabled=True,
         # The whole scenario system plugs in right here: the persona
         # becomes the agent's system prompt for this one call, and the
@@ -98,6 +120,13 @@ if __name__ == "__main__":
         help="Place the call and exit instead of waiting to download the "
              "recording/transcript.",
     )
+    parser.add_argument(
+        "--target",
+        help="Which target profile (targets/*.json) to dial. Omit to dial "
+             "TARGET_NUMBER from .env exactly as before - this flag exists "
+             "for testing a target other than the one in .env, not as the "
+             "normal way to run this script.",
+    )
     args = parser.parse_args()
 
     if args.list:
@@ -107,4 +136,4 @@ if __name__ == "__main__":
 
     if not args.scenario:
         parser.error("--scenario is required (or use --list to see what exists)")
-    place_call(args.scenario, wait=not args.no_wait)
+    place_call(args.scenario, wait=not args.no_wait, target=args.target)

@@ -1,0 +1,6 @@
+# Test-only tooling, kept separate from requirements.txt: the eval
+# layer's checks and report must run with zero new runtime dependencies
+# (BUILD_SPEC_EVAL_LAYER.md sec. 2), but running the test suite itself
+# needs a test runner. `pip install -r requirements-dev.txt` in addition
+# to requirements.txt to run `pytest`.
+pytest
