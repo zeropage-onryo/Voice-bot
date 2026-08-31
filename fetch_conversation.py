@@ -26,6 +26,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 from elevenlabs import ElevenLabs
 
+from core.elevenlabs_client import get_client
+
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
 REPO_ROOT = Path(__file__).resolve().parent
@@ -91,7 +93,7 @@ def write_audio(client: ElevenLabs, conversation_id: str, path: Path) -> Path:
 
 
 def fetch(conversation_id: str, file_stem: str | None = None) -> dict:
-    client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
+    client = get_client()
     conversation = wait_for_conversation(client, conversation_id)
 
     if conversation.status == "failed":

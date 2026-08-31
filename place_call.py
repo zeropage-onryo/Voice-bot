@@ -21,9 +21,9 @@ import argparse
 import os
 
 from dotenv import load_dotenv
-from elevenlabs import ElevenLabs
 
 import fetch_conversation
+from core.elevenlabs_client import get_client, require_env
 from scenarios import loader
 
 load_dotenv()
@@ -39,16 +39,8 @@ def place_call(scenario_id: str, wait: bool = True) -> str:
     except loader.ScenarioError as exc:
         raise SystemExit(f"error: {exc}") from exc
 
-    missing = [v for v in ("ELEVENLABS_API_KEY", "ELEVENLABS_AGENT_ID",
-                           "ELEVENLABS_AGENT_PHONE_NUMBER_ID") if not os.environ.get(v)]
-    if missing:
-        raise SystemExit(
-            f"Missing in .env: {', '.join(missing)}. "
-            "Run `python setup_agent.py` once to create the agent and "
-            "import the Twilio number (needs ELEVENLABS_API_KEY set)."
-        )
-
-    client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
+    require_env("ELEVENLABS_API_KEY", "ELEVENLABS_AGENT_ID", "ELEVENLABS_AGENT_PHONE_NUMBER_ID")
+    client = get_client()
     response = client.conversational_ai.twilio.outbound_call(
         agent_id=os.environ["ELEVENLABS_AGENT_ID"],
         agent_phone_number_id=os.environ["ELEVENLABS_AGENT_PHONE_NUMBER_ID"],

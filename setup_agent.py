@@ -26,7 +26,6 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
-from elevenlabs import ElevenLabs
 from elevenlabs.types import (
     AgentConfig,
     AgentConfigOverrideConfig,
@@ -38,10 +37,8 @@ from elevenlabs.types import (
     PromptAgentApiModelOverrideConfig,
     TtsConversationalConfigOverrideConfig,
 )
-from elevenlabs.conversational_ai.phone_numbers.types.phone_numbers_create_request_body import (
-    PhoneNumbersCreateRequestBody_Twilio,
-)
 
+from core.elevenlabs_client import get_client, import_twilio_number
 from scenarios import loader
 
 ENV_PATH = Path(__file__).resolve().parent / ".env"
@@ -59,7 +56,7 @@ def main() -> None:
                 "dashboard) if you really want to recreate them."
             )
 
-    client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
+    client = get_client()
 
     # The prompt set here is a placeholder: every real call overrides it
     # with the scenario's build_instructions(). It exists so that if an
@@ -100,21 +97,18 @@ def main() -> None:
     )
     print(f"Agent created: {agent.agent_id} ({AGENT_NAME})")
 
-    phone = client.conversational_ai.phone_numbers.create(
-        request=PhoneNumbersCreateRequestBody_Twilio(
-            phone_number=os.environ["TWILIO_PHONE_NUMBER"],
-            label="PGA voice bot (Twilio)",
-            sid=os.environ["TWILIO_ACCOUNT_SID"],
-            token=os.environ["TWILIO_AUTH_TOKEN"],
-        ),
+    phone_number_id = import_twilio_number(
+        client,
+        phone_number=os.environ["TWILIO_PHONE_NUMBER"],
+        label="PGA voice bot (Twilio)",
     )
-    print(f"Twilio number imported: {phone.phone_number_id}")
+    print(f"Twilio number imported: {phone_number_id}")
 
     with ENV_PATH.open("a") as f:
         f.write(
             "\n# ElevenLabs Agents platform (created by setup_agent.py)\n"
             f"ELEVENLABS_AGENT_ID={agent.agent_id}\n"
-            f"ELEVENLABS_AGENT_PHONE_NUMBER_ID={phone.phone_number_id}\n"
+            f"ELEVENLABS_AGENT_PHONE_NUMBER_ID={phone_number_id}\n"
         )
     print(f"Both ids appended to {ENV_PATH}")
 
