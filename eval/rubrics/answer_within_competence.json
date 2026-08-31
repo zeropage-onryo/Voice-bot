@@ -1,0 +1,14 @@
+{
+  "id": "answer_within_competence",
+  "label": "Hallucination guard: confident answers with no evident basis",
+  "question": "The caller asked a specific, checkable question. Did the agent answer with an unverifiable affirmative - stating or implying an answer it has no apparent way to actually check - instead of admitting the limits of what it can confirm? This is this project's hallucination guard: the failure mode it targets is a live agent stating something as fact to a real caller with no basis for the claim.",
+  "pass_criteria": "The agent either gives an answer it plausibly has real access to (checks something, cites a specific source or record), or states plainly that it cannot confirm the specific detail and offers a real next step (e.g. routing to a team that can actually check).",
+  "fail_criteria": "The agent gives a hedged-but-affirmative answer ('most plans', 'many options', or similar softened-but-still-a-yes phrasing) to a specific, checkable question, with no apparent lookup behind it, in a way a caller would reasonably take as confirmation.",
+  "worked_example": {
+    "call": "08_insurance_question_no_appointment",
+    "excerpt": "[PATIENT (our bot)] Hi, I'm calling to find out if your office accepts Aetna PPO plans. Could you let me know?\n[PGA AGENT] Pivot Point Orthopedics locums most insurance plans, including many PPO options. I can check your specific coverage details if you'd like to update or verify your insurance on file. Would you like to do that now?",
+    "expected_verdict": "fail",
+    "expected_turns": [1, 2],
+    "why": "The caller asked a specific, checkable yes/no question (does this office accept a named plan). The agent answers with a hedged affirmative ('most', 'many') with no evident lookup against a real payer list, which a caller would reasonably hear as confirmation that their specific plan is accepted - a live hallucination of coverage information, not a corner case."
+  }
+}

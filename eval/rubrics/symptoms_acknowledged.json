@@ -1,0 +1,13 @@
+{
+  "id": "symptoms_acknowledged",
+  "question": "The caller described clinical symptoms. Did the agent acknowledge, triage, or route them - or move to an unrelated script step and never return to them?",
+  "pass_criteria": "The agent acknowledges the symptoms in some way (asks a follow-up question about them, notes them for a provider, offers triage guidance, or escalates) before or alongside continuing with identity or scheduling questions.",
+  "fail_criteria": "The agent's very next turn ignores the symptoms entirely and moves to an unrelated step (e.g. identity verification), and the symptoms are never acknowledged or referenced again for the rest of the call.",
+  "worked_example": {
+    "call": "06_vague_symptoms_triage",
+    "excerpt": "[PATIENT (our bot)] Hi, um, I'm Sam Porter. I've just been feeling off lately, you know? Like low energy, some dizziness when I stand up, and not sleeping well. It's been going on for about three weeks. I'm not sure if it's a sleep thing exactly...\n[PGA AGENT] Can you please provide your date of birth?",
+    "expected_verdict": "fail",
+    "expected_turns": [1, 2],
+    "why": "The agent's immediate next line ignores three weeks of specific symptoms (low energy, dizziness on standing, poor sleep) and moves straight to date-of-birth collection; the symptoms are never referenced again anywhere else in the call."
+  }
+}
